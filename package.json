@@ -1,5 +1,6 @@
 {
   "name": "pokemon-app",
+  "homepage": "https://tbt-denis.github.io/pokemon-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "sass": "^1.53.0"
   }
 }
