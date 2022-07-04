@@ -1,0 +1,66 @@
+.cardbox__container {
+  padding: 10px;
+  background-color: tan;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 10px;
+}
+
+.card {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    min-height: 400px;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 15px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(122 122 122 / 55%);
+  }
+  &__img {
+    padding: 10px 10px 0 10px;
+    height: 200px;
+    width: 200px;
+  }
+  &__main {
+    display: grid;
+    row-gap: 10px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+}
+.pokemon-details {
+  position: relative;
+
+  &__type {
+    text-transform: capitalize;
+    top: -10px;
+    padding: 10px;
+    left: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    position: absolute;
+  }
+  &__name {
+    text-transform: capitalize;
+    text-align: center;
+  }
+  &__stats {
+    display: grid;
+    row-gap: 10px;
+  }
+  &__card-footer {
+    text-align: center;
+  }
+}
+.pokomin-details {
+  &__param {
+    text-transform: capitalize;
+  }
+}
