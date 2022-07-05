@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card } from './components/Card/Card';
 import Search from './components/Search/Search';
 import './styles.scss'
@@ -20,10 +20,10 @@ function App() {
   const [pokemonAPI, setPokemonAPI] = useState('https://pokeapi.co/api/v2/pokemon/?limit=20')
 
   // Empty array for pokemons
-  const [pokemons, setPokemons] = useState([])
+  const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
   // Get Array pokemons
-  const getPokemons = async (API: string) => {
+  const getPokemons = async (API: string): Promise<void> => {
     try {
       const result = await fetch(API)
       const response = await result.json()
@@ -33,7 +33,7 @@ function App() {
         onePokemon(response.results)
       }
       else {
-        setPokemons((): any => [response])
+        setPokemons(() => [response])
       }
     }
     catch (e) {
@@ -41,12 +41,14 @@ function App() {
     }
   }
 
-  const onePokemon = (pokemon: Array<Pokemon>) => {
+  const onePokemon = (pokemon: Pokemon[]) => {
     try {
-      pokemon.map(async (pokemon) => {
+      pokemon.map(async (pokemon)  => {
         const result = await fetch('https://pokeapi.co/api/v2/pokemon/' + `${pokemon.name}`)
         const newState = await result.json()
-        setPokemons((previousState): any => [...previousState, newState])
+        setPokemons((previousState) => {
+          return [...previousState, newState]
+        }) 
       })
     }
     catch (e) {
@@ -75,9 +77,10 @@ function App() {
       <div className="cardbox__container">
         {
           pokemons.length ?
-            pokemons.map((pokemon: any, index): Pokemon | any => {
+          // ! any type fix
+            pokemons.map((pokemon : any) => {
               return (
-                <Card key={index}
+                <Card key={pokemon.id}
                   id={pokemon.id}
                   attack={pokemon.stats[1].base_stat}
                   type={pokemon.types[0].type.name}

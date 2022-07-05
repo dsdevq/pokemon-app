@@ -29,9 +29,6 @@ export const backgroundColors: Colors = {
 
 export const Card: FunctionComponent<Pokemon> = ({ id, name, attack, defense, power, attacks, health, img, type }) => {
 
-
-
-
   return (
     <div className="card__body" id={id.toString()}
       style={{

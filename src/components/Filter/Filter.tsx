@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { backgroundColors } from '../Card/Card'
+import { Props } from '../Search/Search'
 import './Filter.scss'
 
-export default function Filter({ pokemons, setPokemons }: any) {
+export default function Filter({ pokemons, setPokemons }: Props) {
 
   // Чтобы выгружать определенные типы, необходимо getPokemons(все покемоны отдельно кликнутого типа) "https://pokeapi.co/api/v2/type/{кликнутыйТип}/" 
 
@@ -25,7 +26,7 @@ export default function Filter({ pokemons, setPokemons }: any) {
 
   const filterByType = (pressedType: any) => {
     const array = pokemons
-    const filtered = array.filter((value: { types: { type: any }[] }) => {
+    const filtered = array.filter((value : any) => {
       return value.types[0].type.name === pressedType
     })
     setPokemons(filtered)
