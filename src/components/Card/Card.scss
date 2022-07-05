@@ -1,9 +1,9 @@
 .cardbox__container {
   padding: 10px;
-  background-color: tan;
+  // background-color: tan;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: 10px;
+  gap: 15px;
 }
 
 .card {
@@ -15,51 +15,65 @@
     border-width: 10px;
     border-style: solid;
     border-radius: 15px;
+    transition: 0.2s ease-in;
+    &:hover {
+      transform: scale(1.02);
+    }
   }
+
   &__header {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(122 122 122 / 55%);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
+
   &__img {
     padding: 10px 10px 0 10px;
     height: 200px;
     width: 200px;
   }
+
   &__main {
     display: grid;
     row-gap: 10px;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.65);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }
+
 .pokemon-details {
   position: relative;
 
   &__type {
     text-transform: capitalize;
     top: -10px;
-    padding: 10px;
+    padding: 5px 10px;
     left: 10px;
     background-color: black;
     color: white;
-    border-radius: 15px;
+    border-radius: 5px;
     position: absolute;
   }
+
   &__name {
     text-transform: capitalize;
     text-align: center;
   }
+
   &__stats {
     display: grid;
     row-gap: 10px;
   }
+
   &__card-footer {
     text-align: center;
   }
-}
-.pokomin-details {
+
   &__param {
     text-transform: capitalize;
   }

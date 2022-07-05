@@ -4,10 +4,38 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
+  outline: none;
+
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  background-color: tan;
+}
+
+.button {
+  position: sticky;
+  bottom: 5px;
+  align-self: center;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: darken($color: tan, $amount: 20);
+  border: 3px solid darken($color: tan, $amount: 30%);
+  max-width: fit-content;
+  white-space: nowrap;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.noPokemons {
+  display: grid;
+  place-content: center;
+  font-size: 40px;
+  padding: 20px;
 }

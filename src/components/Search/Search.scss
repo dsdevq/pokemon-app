@@ -1,0 +1,44 @@
+.header {
+  height: 60px;
+  outline: none;
+  top: 0;
+  position: sticky;
+  z-index: 100;
+  background-color: darken($color: tan, $amount: 15%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(172, 114, 39, 0.8);
+  gap: 10px;
+  box-shadow: 2px 2px 8px black;
+}
+
+img {
+  height: 100%;
+}
+
+
+input {
+  width: 100%;
+  border: 2px solid darken($color: tan, $amount: 30%);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 5px;
+  height: 30px;
+}
+
+button {
+  padding: 0 5px;
+  background-color: darken($color: tan, $amount: 20);
+  border: 2px solid darken($color: tan, $amount: 30%);
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

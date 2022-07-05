@@ -2,44 +2,45 @@ import React, { FunctionComponent } from 'react'
 import './Card.scss'
 import { Pokemon } from '../../App'
 
-interface Colors {
+export interface Colors {
   [key: string]: string | undefined
 }
 
+export const backgroundColors: Colors = {
+  fire: 'red',
+  fighting: 'orange',
+  rock: 'orange',
+  ground: 'orange',
+  dragon: 'gold',
+  electric: 'yellow',
+  grass: 'green',
+  bug: 'green',
+  poison: 'green',
+  water: 'blue',
+  ice: 'blue',
+  fairy: 'pink',
+  ghost: 'pink',
+  physic: 'purple',
+  dark: 'black',
+  steel: 'silver',
+  normal: 'white',
+  flying: 'white'
+}
 
-export const Card:FunctionComponent<Pokemon> = ( { id, name, attack, defense, power, attacks, health, img , type}) => {
+export const Card: FunctionComponent<Pokemon> = ({ id, name, attack, defense, power, attacks, health, img, type }) => {
 
-  const backgroundColors: Colors = {
-    fire: 'red',
-    fighting: 'orange',
-    rock: 'orange',
-    ground: 'orange',
-    dragon: 'gold',
-    electric: 'yellow',
-    grass: 'green',
-    bug: 'green',
-    poison: 'green',
-    water: 'blue',
-    ice: 'blue',
-    fairy: 'pink',
-    ghost: 'pink',
-    physic: 'purple',
-    dark: 'black',
-    steel: 'silver',
-    normal: 'white',
-    flying: 'white'
-  }
 
 
 
   return (
     <div className="card__body" id={id.toString()}
-    style={{ 
-      // $color: blue, $amount: 10%
-      borderColor: backgroundColors[type],
-      filter: 'brightness(90%)',
-      background: `linear-gradient(110deg, ${backgroundColors[type]} 0%, #3A1C71 100%)`,
-    }}
+      style={{
+        // $color: blue, $amount: 10%
+        borderColor: backgroundColors[type],
+        filter: 'brightness(90%)',
+        // 110 deg
+        background: `linear-gradient(270deg, ${backgroundColors[type]} 0%, #3A1C71 100%)`,
+      }}
     >
       <header className="card__header">
         <img className='card__img' src={img} alt="Pokemon" />
@@ -56,19 +57,19 @@ export const Card:FunctionComponent<Pokemon> = ( { id, name, attack, defense, po
         </h3>
 
         <section className="pokemon-details__stats">
-          <p className="pokomin-details__param">
+          <p className="pokemon-details__param">
             Power: {power}
           </p>
-          <p className="pokomin-details__param">
-            Damage: {attack} 
+          <p className="pokemon-details__param">
+            Damage: {attack}
           </p>
-          <p className="pokomin-details__param">
+          <p className="pokemon-details__param">
             Attacks: {attacks}
           </p>
-          <p className="pokomin-details__param">
+          <p className="pokemon-details__param">
             Health: {health}
           </p>
-          <p className="pokomin-details__param">
+          <p className="pokemon-details__param">
             Defense: {defense}
           </p>
         </section>
