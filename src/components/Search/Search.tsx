@@ -33,7 +33,11 @@ export default function Search({getPokemons, pokemons, setPokemons} : Props )  {
       <img
         src={PokemonLogo} alt="Logo"
       />
-      <Filter pokemons={pokemons} setPokemons={setPokemons} />
+      <Filter pokemons={pokemons} setPokemons={setPokemons} 
+      // ! Fix 
+      getPokemons={function (url: string): Promise<void> {
+        throw new Error('Function not implemented.')
+      } } />
 
       <form onSubmit={handleOnSubmit}>
         <input

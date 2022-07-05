@@ -19,7 +19,7 @@ export default function Filter({ pokemons, setPokemons }: Props) {
   const getTypes = async (API: string) => {
     const response = await fetch(API)
     const result = await response.json()
-    console.log(result)
+    // console.log(result)
     // console.log(result.results)
     setTypes(result.results)
   }
