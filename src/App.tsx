@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Card } from './components/Card/Card';
 import Search from './components/Search/Search';
 import './styles.scss'
@@ -43,12 +43,12 @@ function App() {
 
   const onePokemon = (pokemon: Pokemon[]) => {
     try {
-      pokemon.map(async (pokemon)  => {
+      pokemon.map(async (pokemon) => {
         const result = await fetch('https://pokeapi.co/api/v2/pokemon/' + `${pokemon.name}`)
         const newState = await result.json()
         setPokemons((previousState) => {
           return [...previousState, newState]
-        }) 
+        })
       })
     }
     catch (e) {
@@ -58,17 +58,16 @@ function App() {
 
   // TO AVOID RENDERING TWICE 
   const effectRan = useRef(false)
-
   useEffect(() => {
-
     if (effectRan.current === false) {
       getPokemons(pokemonAPI)
     }
-
     return () => {
       effectRan.current = true
     }
   }, [])
+
+  //   IF containerHeight true + user scrollDown + user`s window height (its actually whole page) > container height (whole container is scrolled) => then fetch more pokemons 
 
   return (
     <div className="App">
@@ -77,8 +76,8 @@ function App() {
       <div className="cardbox__container">
         {
           pokemons.length ?
-          // ! any type fix
-            pokemons.map((pokemon : any) => {
+            // ! any type fix
+            pokemons.map((pokemon: any) => {
               return (
                 <Card key={pokemon.id}
                   id={pokemon.id}
@@ -99,9 +98,9 @@ function App() {
             </h1>)
         }
       </div>
-      <button className='button' onClick={() => getPokemons(pokemonAPI)}>
-        More pokemons
-      </button>
+        <button className='button' onClick={() => getPokemons(pokemonAPI)}>
+          More pokemons
+        </button>
     </div>
   );
 }
