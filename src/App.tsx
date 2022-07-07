@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Card } from './components/Card/Card';
+import Filter from './components/Filter/Filter';
 import Search from './components/Search/Search';
 import './styles.scss'
 
@@ -14,6 +15,7 @@ export interface Pokemon {
   health: number,
   type: string
 }
+
 function App() {
 
   // Get pokemon list API
@@ -32,6 +34,12 @@ function App() {
         setPokemonAPI(response.next)
         onePokemon(response.results)
       }
+      // If array with types
+      else if (response.pokemon) {
+        setPokemons([])
+        getPokemonsByType(response.pokemon)
+      }
+      // If search
       else {
         setPokemons(() => [response])
       }
@@ -40,6 +48,17 @@ function App() {
       console.error(e)
     }
   }
+
+  const getPokemonsByType = (array: any[]) => {
+    array.map(async (pokemon) => {
+      const result = await fetch(pokemon.pokemon.url)
+      const newState = await result.json()
+      setPokemons((previousState) => {
+        return [...previousState, newState]
+      })
+    })
+  }
+
 
   const onePokemon = (pokemon: Pokemon[]) => {
     try {
@@ -72,7 +91,9 @@ function App() {
   return (
     <div className="App">
       <Search getPokemons={getPokemons} setPokemons={setPokemons} pokemons={pokemons} />
-
+      <Filter
+        getPokemons={getPokemons}
+      />
       <div className="cardbox__container">
         {
           pokemons.length ?
@@ -86,7 +107,7 @@ function App() {
                   defense={pokemon.stats[2].base_stat}
                   health={pokemon.stats[0].base_stat}
                   power={pokemon.base_experience}
-                  attacks={pokemon.abilities[0].ability.name}
+                  attacks={pokemon.abilities[0]?.ability.name}
                   name={pokemon.name}
                   img={pokemon.sprites.other.dream_world.front_default}
                 />
@@ -98,9 +119,9 @@ function App() {
             </h1>)
         }
       </div>
-        <button className='button' onClick={() => getPokemons(pokemonAPI)}>
-          More pokemons
-        </button>
+      <button className='button' onClick={() => getPokemons(pokemonAPI)}>
+        More pokemons
+      </button>
     </div>
   );
 }

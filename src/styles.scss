@@ -16,13 +16,13 @@ body {
   background-color: tan;
 }
 
-button {
+.button {
   position: sticky;
   bottom: 5px;
   align-self: center;
   padding: 10px;
   border-radius: 20px;
-  background-color: darken($color: tan, $amount: 20);
+  background-color: darken($color: tan, $amount: 20%);
   border: 3px solid darken($color: tan, $amount: 30%);
   max-width: fit-content;
   white-space: nowrap;

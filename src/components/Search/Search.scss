@@ -4,7 +4,6 @@
   top: 0;
   position: sticky;
   z-index: 100;
-  background-color: darken($color: tan, $amount: 15%);
   padding: 10px;
   display: flex;
   align-items: center;
@@ -14,13 +13,18 @@
   box-shadow: 2px 2px 8px black;
 }
 
-img {
+
+a {
   height: 100%;
+  img {
+    height: 100%;
+  }
 }
 
 
 input {
   width: 100%;
+  min-width: 70px;
   border: 2px solid darken($color: tan, $amount: 30%);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -29,12 +33,12 @@ input {
 }
 
 button {
-  padding: 0 5px;
-  background-color: darken($color: tan, $amount: 20);
-  border: 2px solid darken($color: tan, $amount: 30%);
+  background-color: #b28446;
+  border: 2px solid #8e6937;
+  border-bottom-right-radius: 5px;
   border-left: none;
   border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  padding: 0 5px;
 }
 
 form {

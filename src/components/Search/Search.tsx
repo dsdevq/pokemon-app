@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React, { SetStateAction, useState } from 'react'
 import './Search.scss'
 import PokemonLogo from '../../assets/pokemonLogo.png'
-import Filter from '../Filter/Filter'
 import { Pokemon } from '../../App'
 
 const SEARCH_API = 'https://pokeapi.co/api/v2/pokemon/'
 
 export interface Props {
   getPokemons: (url: string) => Promise<void>,
-  pokemons: Pokemon[],
-  setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>
+  pokemons?: Pokemon[],
+  setPokemons?: React.Dispatch<React.SetStateAction<Pokemon[]>>
 }
 
-export default function Search({getPokemons, pokemons, setPokemons} : Props )  {
+export default function Search({ getPokemons }: Props) {
 
   const [search, setSearch] = useState('')
 
@@ -30,15 +29,11 @@ export default function Search({getPokemons, pokemons, setPokemons} : Props )  {
 
   return (
     <header className="header">
-      <img
-        src={PokemonLogo} alt="Logo"
-      />
-      <Filter pokemons={pokemons} setPokemons={setPokemons} 
-      // ! Fix 
-      getPokemons={function (url: string): Promise<void> {
-        throw new Error('Function not implemented.')
-      } } />
-
+      <a href="reload">
+        <img
+          src={PokemonLogo} alt="Logo"
+        />
+      </a>
       <form onSubmit={handleOnSubmit}>
         <input
           placeholder='Search pokemon...'

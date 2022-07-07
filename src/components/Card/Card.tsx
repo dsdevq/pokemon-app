@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import './Card.scss'
 import { Pokemon } from '../../App'
+import secondImage from '../../assets/ifIMGnull.svg'
 
 export interface Colors {
   [key: string]: string | undefined
@@ -40,7 +41,7 @@ export const Card: FunctionComponent<Pokemon> = ({ id, name, attack, defense, po
       }}
     >
       <header className="card__header">
-        <img className='card__img' src={img} alt="Pokemon" />
+        <img className='card__img' src={img ? img : secondImage} alt="Pokemon" />
       </header>
 
       <main className="card__main pokemon-details">

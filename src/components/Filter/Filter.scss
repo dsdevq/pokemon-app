@@ -1,4 +1,19 @@
 .filterButton {
   padding: 5px;
   border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.type {
+  &__container {
+    top: 60px;
+    position: sticky;
+    z-index: 2;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
 }
