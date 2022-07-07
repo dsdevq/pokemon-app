@@ -29,7 +29,7 @@ export default function Search({ getPokemons }: Props) {
 
   return (
     <header className="header">
-      <a href="reload">
+      <a href="#reload">
         <img
           src={PokemonLogo} alt="Logo"
         />
