@@ -18,7 +18,6 @@ export default function Filter({ getPokemons }: Props) {
   const getTypes = async (API: string) => {
     const response = await fetch(API)
     const result = await response.json()
-    console.log(result)
     // Slicing last 2 types, because they`re null 
     setTypes(result.results.slice(0, result.results.length - 2))
   }
